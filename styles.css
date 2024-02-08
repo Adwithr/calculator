@@ -1,0 +1,70 @@
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+  font-family: "Dosis", sans-serif;
+  background: rgb(1, 114, 175);
+  background: linear-gradient(
+    90deg,
+    rgba(1, 114, 175, 1) 0%,
+    rgba(116, 254, 189, 1) 88%
+  );
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 400px;
+  height: 520px;
+  padding: 20px 35px;
+  box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border-radius: 13px;
+}
+
+.display {
+  border: 1px solid black;
+  font-size: 35px;
+  padding: 20px;
+  width: 326px;
+  text-align: right;
+  box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 5% 0;
+}
+
+.buttons {
+  flex-basis: 20%;
+  font-family: inherit;
+  font-size: 24px;
+  height: 65px;
+  box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+  border-radius: 16px;
+  border: none;
+}
+
+.clear {
+  flex-basis: 47%;
+}
+
+.triple {
+  flex-basis: 73%;
+}
