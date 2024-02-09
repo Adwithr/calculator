@@ -2,7 +2,9 @@ html {
   box-sizing: border-box;
   height: 100%;
 }
-* {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
@@ -10,10 +12,11 @@ html {
 
 body {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: inherit;
   font-family: "Dosis", sans-serif;
+  font-display: swap;
   background: rgb(1, 114, 175);
   background: linear-gradient(
     90deg,
@@ -26,18 +29,27 @@ body {
   display: flex;
   flex-direction: column;
   flex-basis: 400px;
-  height: 520px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  height: 540px;
   padding: 20px 35px;
   box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
-  background: rgba(255, 255, 255, 0.55);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(13.5px);
-  -webkit-backdrop-filter: blur(13.5px);
-  border-radius: 13px;
+  color: #232323;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.34);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
 }
 
 .display {
-  border: 1px solid black;
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.01);
+  border-radius: 16px;
+  color: #232323;
   font-size: 35px;
   padding: 20px;
   width: 326px;
@@ -52,14 +64,39 @@ body {
   margin: 5% 0;
 }
 
+.buttons:last-child {
+  background-color: hsl(201.03deg 100% 42.13%);
+  color: #fff;
+}
+
+.buttons:last-child:hover {
+  background-color: hsl(201.03deg 100% 50%);
+}
+
+.buttons:last-child:active {
+  background-color: hsl(201.03deg 100% 42.13%);
+}
+
 .buttons {
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.01);
+  color: #232323;
   flex-basis: 20%;
   font-family: inherit;
   font-size: 24px;
   height: 65px;
   box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
   border-radius: 16px;
-  border: none;
+}
+
+.buttons:hover {
+  background-color: inherit;
+}
+
+.buttons:active {
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 .clear {
