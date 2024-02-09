@@ -1,1 +1,1 @@
-# The Odin Project final project of foundations
+The Odin Project Final Project of Foundations
