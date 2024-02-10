@@ -89,11 +89,11 @@ body {
   font-size: 24px;
   height: 65px;
   box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
-  border-radius: 16px;
+  border-radius: 17px;
 }
 
 .buttons:hover {
-  background-color: inherit;
+  background-color: hsla(0, 0%, 85%, 0.75);
 }
 
 .buttons:active {
