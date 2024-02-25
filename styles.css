@@ -42,6 +42,7 @@ body {
   background: rgba(255, 255, 255, 0.34);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.34);
+  gap: 21px;
 }
 
 .display {
@@ -51,18 +52,35 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.01);
   border-radius: 16px;
   color: #232323;
-  font-size: 35px;
-  padding: 20px;
   width: 326px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 6px;
   text-align: right;
   box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
   overflow: hidden;
+  height: 74px;
+}
+
+.uprDisplay {
+  font-size: 17px;
+  height: 20px;
+}
+
+.lwrDisplay {
+  font-size: 35px;
 }
 
 .button-row {
   display: flex;
   justify-content: space-between;
   margin: 5% 0;
+}
+
+.button-row:nth-child(1),
+.button-row:last-child {
+  margin: 0;
 }
 
 .buttons:last-child {
