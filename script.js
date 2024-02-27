@@ -7,17 +7,19 @@ buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     if (e.target.textContent === "C") clearDisplay();
     else if (e.target.classList.contains("oper")) {
-      oper = e.target.textContent;
-      firstVal = +lwrDisplay.textContent;
-      uprDisplay.textContent += firstVal + e.target.textContent;
-      lwrDisplay.textContent = "";
+      if (uprDisplay.textContent.match(/[+\-\/\*]/)) calc();
+      else {
+        oper = e.target.textContent;
+        firstVal = +lwrDisplay.textContent;
+        uprDisplay.textContent += firstVal + e.target.textContent;
+        lwrDisplay.textContent = "";
+      }
     } else if (e.target.textContent === "=") calc();
     else if (e.target.classList.contains("backspace"))
       lwrDisplay.textContent = lwrDisplay.textContent.slice(0, -1);
     else lwrDisplay.textContent += e.target.textContent;
   });
 });
-
 function clearDisplay() {
   uprDisplay.textContent = "";
   lwrDisplay.textContent = "";
