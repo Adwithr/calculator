@@ -7,8 +7,14 @@ buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     if (e.target.textContent === "C") clearDisplay();
     else if (e.target.classList.contains("oper")) {
-      if (uprDisplay.textContent.match(/[+\-\/\*]/)) calc();
-      else {
+      if (uprDisplay.textContent.match(/[+\-\/\*]/)) {
+        // secVal = +lwrDisplay.textContent;
+        // uprDisplay.textContent += secVal;
+        // let res2 = operate(firstVal, secVal, oper);
+        // oper = e.target.textContent;
+        // uprDisplay.textContent = `${res2}${oper}`;
+        // firstVal = lwrDisplay.textContent;
+      } else {
         oper = e.target.textContent;
         firstVal = +lwrDisplay.textContent;
         uprDisplay.textContent += firstVal + e.target.textContent;
@@ -20,6 +26,7 @@ buttons.forEach((button) => {
     else lwrDisplay.textContent += e.target.textContent;
   });
 });
+
 function clearDisplay() {
   uprDisplay.textContent = "";
   lwrDisplay.textContent = "";
