@@ -62,12 +62,6 @@ let equals = document.querySelector(".equals");
 let uprDisplay = document.querySelector(".uprDisplay");
 let lwrDisplay = document.querySelector(".lwrDisplay");
 
-/*        TODO
-  1. MAKE CLEAR AND BACKSPACE WORK
-  2. MAKE A ROUND NUMBER FUNCTION
-  3. SOMEHOW FIGURE OUT CHAINING EXPRESSIONS
-*/
-
 numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
     handleNumber(e.target.textContent);
@@ -77,18 +71,38 @@ numbers.forEach((number) => {
 
 oper.forEach((op) => {
   op.addEventListener("click", (e) => {
-    handleOperator(e.target.textContent);
+    if (uprDisplay.textContent.match(/[+\-\/\*]/)) {
+      let res = operate(previousVal, currentVal, operator);
+      operator = e.target.textContent;
+      currentVal = "";
+      previousVal = res;
+      uprDisplay.textContent = `${res}${operator}`;
+      lwrDisplay.textContent = `${res}`;
+    } else if (currentVal === "" && previousVal === "") return;
+    else handleOperator(e.target.textContent);
   });
 });
 
 equals.addEventListener("click", () => {
-  let res = operate(previousVal, currentVal, operator);
+  if (currentVal === "" || previousVal === "") return;
   uprDisplay.textContent += currentVal;
   lwrDisplay.textContent = `=${operate(previousVal, currentVal, operator)}`;
 });
 
+clear.addEventListener("click", () => {
+  operator = "";
+  previousVal = "";
+  currentVal = "";
+  uprDisplay.textContent = "";
+  lwrDisplay.textContent = "";
+});
+
+backspace.addEventListener("click", () => {
+  lwrDisplay.textContent = lwrDisplay.textContent.slice(0, -1);
+});
+
 function handleNumber(num) {
-  currentVal += num;
+  if (currentVal.length < 7) currentVal += num;
 }
 
 function handleOperator(op) {
@@ -100,17 +114,23 @@ function handleOperator(op) {
 }
 
 function operate(preVal, curVal, op) {
+  let ans;
   preVal = Number(preVal);
   curVal = Number(curVal);
   switch (op) {
     case "+":
-      return preVal + curVal;
+      ans = preVal + curVal;
+      break;
     case "-":
-      return preVal - curVal;
+      ans = preVal - curVal;
+      break;
     case "*":
-      return preVal * curVal;
+      ans = preVal * curVal;
+      break;
     case "/":
       if (curVal == 0) return "oooof";
-      else return preVal / curVal;
+      else ans = preVal / curVal;
+      break;
   }
+  return Math.round(ans * 1000) / 1000;
 }
