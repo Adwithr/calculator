@@ -92,7 +92,7 @@ document.addEventListener("keyup", (e) => {
 // Play a sound effect for button clicks
 buttons.forEach((button) =>
   button.addEventListener("click", () =>
-    new Audio("mixkit-plastic-bubble-click-1124.wav").play()
+    new Audio("plastic-bubble-click-1124.wav").play()
   )
 );
 
