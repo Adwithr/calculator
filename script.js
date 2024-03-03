@@ -1,7 +1,9 @@
+// Initialize variables for calculator values
 let operator = "",
   previousVal = "",
   currentVal = "";
 
+// Selecting DOM elements
 let buttons = document.querySelectorAll("button");
 let numbers = Array.from(document.querySelectorAll(".num"));
 let oper = Array.from(document.querySelectorAll(".oper"));
@@ -12,6 +14,7 @@ let uprDisplay = document.querySelector(".uprDisplay");
 let lwrDisplay = document.querySelector(".lwrDisplay");
 let decimal = document.querySelector(".decimal");
 
+// Handle number button clicks
 numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
     handleNumber(e.target.textContent);
@@ -19,6 +22,7 @@ numbers.forEach((number) => {
   });
 });
 
+//Handle operator button clicks
 oper.forEach((op) => {
   op.addEventListener("click", (e) => {
     if (uprDisplay.textContent.match(/[+\-\/\*]/)) {
@@ -33,12 +37,14 @@ oper.forEach((op) => {
   });
 });
 
+// Handle equal button click
 equals.addEventListener("click", () => {
   if (currentVal === "" || previousVal === "") return;
   uprDisplay.textContent += currentVal;
   lwrDisplay.textContent = `=${operate(previousVal, currentVal, operator)}`;
 });
 
+// Clear button click resets the state
 clear.addEventListener("click", () => {
   operator = "";
   previousVal = "";
@@ -47,10 +53,12 @@ clear.addEventListener("click", () => {
   lwrDisplay.textContent = "";
 });
 
+// Backspace button removes the last digit
 backspace.addEventListener("click", () => {
   lwrDisplay.textContent = lwrDisplay.textContent.slice(0, -1);
 });
 
+// Decimal button adds a decimal point
 decimal.addEventListener("click", () => {
   if (!currentVal.includes(".")) {
     currentVal += ".";
@@ -58,6 +66,7 @@ decimal.addEventListener("click", () => {
   }
 });
 
+// Handle keyboard input for simulating button clicks
 document.addEventListener("keyup", (e) => {
   const operatorKey = e.key;
   if (e.key === "c") clear.click();
@@ -80,16 +89,19 @@ document.addEventListener("keyup", (e) => {
   } else return;
 });
 
+// Play a sound effect for button clicks
 buttons.forEach((button) =>
   button.addEventListener("click", () =>
     new Audio("mixkit-plastic-bubble-click-1124.wav").play()
   )
 );
 
+// Function to handle number inputs
 function handleNumber(num) {
   if (currentVal.length < 7) currentVal += num;
 }
 
+// Function to handle operator inputs
 function handleOperator(op) {
   operator = op;
   previousVal = currentVal;
@@ -98,6 +110,7 @@ function handleOperator(op) {
   lwrDisplay.textContent = currentVal;
 }
 
+// Function to handle basic arithmetic operations
 function operate(preVal, curVal, op) {
   let ans;
   preVal = Number(preVal);
@@ -117,5 +130,5 @@ function operate(preVal, curVal, op) {
       else ans = preVal / curVal;
       break;
   }
-  return Math.round(ans * 1000) / 1000;
+  return Math.round(ans * 1000) / 1000; // Rounds the result to 3 decimal places
 }
